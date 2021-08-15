@@ -11,7 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
     <!-- AppBar layout for using Toolbar as AppBar -->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -95,8 +95,7 @@
         android:layout_height="wrap_content"
         android:iconifiedByDefault="false"
         android:queryHint="Search Accounts or Products"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/sechview_rounded"
         android:queryBackground="@android:color/transparent"
         />
@@ -105,9 +104,10 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/viewPagerImageSlider"
         android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_height="wrap_content"
-        tools:context=".MainActivity">
+        tools:context=".activities.MainActivity">
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -119,18 +119,21 @@
                 android:id="@+id/indicator"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:background="@drawable/gradient_bg" />
+                android:visibility="gone" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:background="@drawable/tab_bg"
-                app:tabGravity="fill"
+                app:tabPaddingStart="10dp"
+                app:tabPaddingEnd="10dp"
                 app:tabIndicatorColor="@null"
                 app:tabMode="fixed"
+                app:tabIndicatorHeight="0dp"
+                app:tabBackground="@drawable/tab_background"
                 app:tabRippleColor="@null"
-                app:tabSelectedTextColor="#ffffff" />
+                app:tabTextColor="@color/cardview_dark_background"
+                app:tabSelectedTextColor="@color/design_default_color_secondary" />
 
         </FrameLayout>
 

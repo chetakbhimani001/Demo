@@ -1,13 +1,18 @@
-package com.example.myapplication;
+package com.example.myapplication.fragments;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.myapplication.R;
+import com.example.myapplication.adapters.MyRecyclerViewAdapter;
+import com.example.myapplication.models.UserData;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -90,7 +95,11 @@ public class BlankFragment extends Fragment {
         setUIRef(view);
     }
     private void setUIRef(View view)
+
     {
+        TextView clearAll = view.findViewById(R.id.txtClearAll);
+        clearAll.setPaintFlags(clearAll.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
+
         RecyclerView recyclerView = view.findViewById(R.id.myRecyclerView);
 
         MyRecyclerViewAdapter myRecyclerViewAdapter = new MyRecyclerViewAdapter(mUserData.getUsers());

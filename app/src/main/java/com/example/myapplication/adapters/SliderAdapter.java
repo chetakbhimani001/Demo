@@ -1,9 +1,11 @@
-package com.example.myapplication;
+package com.example.myapplication.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.R;
+import com.example.myapplication.models.SliderItems;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
@@ -15,7 +17,7 @@ import androidx.viewpager2.widget.ViewPager2;
 public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder> {
     private List<SliderItems> sliderItems;
     private ViewPager2 viewPager2;
-    SliderAdapter(List<SliderItems> sliderItems, ViewPager2 viewPager2) {
+    public SliderAdapter(List<SliderItems> sliderItems, ViewPager2 viewPager2) {
         this.sliderItems = sliderItems;
         this.viewPager2 = viewPager2;
     }

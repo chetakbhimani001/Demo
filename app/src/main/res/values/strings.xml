@@ -5,4 +5,6 @@
     <string name="new_story">New Story</string>
     <string name="post">Post</string>
     <string name="tag">Tag</string>
+    <string name="recent">Recent</string>
+    <string name="clear_all">Clear All</string>
 </resources>

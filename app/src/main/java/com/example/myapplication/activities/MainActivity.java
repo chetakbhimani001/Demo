@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.activities;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -7,8 +7,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.example.myapplication.R;
+import com.example.myapplication.adapters.SliderAdapter;
+import com.example.myapplication.fragments.BlankFragment;
+import com.example.myapplication.models.SliderItems;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -25,7 +30,7 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-public class MainActivity extends AppCompatActivity  implements BlankFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity  implements BlankFragment.OnFragmentInteractionListener {
     private ViewPager2 viewPager2;
     private View indicator;
     private TabLayout tab;
@@ -119,12 +124,12 @@ public class MainActivity extends AppCompatActivity  implements BlankFragment.On
 
     }
     private void tabSettings() {
-        tab.post(() -> {
-            indicatorWidth = tab.getWidth() / tab.getTabCount();
-            FrameLayout.LayoutParams indicatorParams = (FrameLayout.LayoutParams) indicator.getLayoutParams();
-            indicatorParams.width = indicatorWidth;
-            indicator.setLayoutParams(indicatorParams);
-        });
+        for(int i=0; i < tab.getTabCount(); i++) {
+            View tabv = ((ViewGroup) tab.getChildAt(0)).getChildAt(i);
+            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) tabv.getLayoutParams();
+            p.setMargins(0, 0, 50, 0);
+            tabv.requestLayout();
+        }
 
         viewPagerTabs.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -153,6 +158,7 @@ public class MainActivity extends AppCompatActivity  implements BlankFragment.On
 
         private static final int FIRST_TAB = 0;
         private static final int SECOND_TAB = 1;
+        private static final int THIRD = 3;
 
         private int[] TABS;
 
@@ -161,7 +167,7 @@ public class MainActivity extends AppCompatActivity  implements BlankFragment.On
         public SamplePagerAdapter(final Context context, final FragmentManager fm) {
             super(fm);
             mContext = context.getApplicationContext();
-            TABS = new int[]{FIRST_TAB, SECOND_TAB};
+            TABS = new int[]{FIRST_TAB, SECOND_TAB,THIRD};
         }
 
         @Override
@@ -169,16 +175,21 @@ public class MainActivity extends AppCompatActivity  implements BlankFragment.On
             Bundle bundle = new Bundle();
             switch (TABS[position]) {
                 case FIRST_TAB:
-                    bundle.putString("param1","FIRST TAB");
+                    bundle.putString("param1","All");
                     BlankFragment blankFragment=new BlankFragment();
                     blankFragment.setArguments(bundle);
                     return blankFragment;
 
                 case SECOND_TAB:
-                    bundle.putString("param1","SECOND TAB");
+                    bundle.putString("param1","Accounts");
                     BlankFragment blankFragment1=new BlankFragment();
                     blankFragment1.setArguments(bundle);
                     return blankFragment1;
+                case THIRD:
+                    bundle.putString("param1","Products");
+                    BlankFragment blankFragmen2=new BlankFragment();
+                    blankFragmen2.setArguments(bundle);
+                    return blankFragmen2;
 
             }
             return null;
@@ -194,9 +205,11 @@ public class MainActivity extends AppCompatActivity  implements BlankFragment.On
         public CharSequence getPageTitle(int position) {
             switch (TABS[position]) {
                 case FIRST_TAB:
-                    return "FIRST TAB";
+                    return "All";
                 case SECOND_TAB:
-                    return "SECOND TAB";
+                    return "Accounts";
+                case THIRD:
+                    return "Products";
             }
             return null;
         }
