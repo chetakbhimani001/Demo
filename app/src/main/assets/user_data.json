@@ -1,0 +1,23 @@
+{
+  "user":
+  [
+    {
+      "name": "Sam Bagela",
+      "description": "sam.bag",
+      "photo": "http://bootstrap.gallery/everest-v3/img/user7.jpg",
+      "color": "#00BCD4"
+    },
+    {
+      "name": "Shoes",
+      "description": "Sketchers",
+      "photo": "http://bootstrap.gallery/everest-v3/img/user4.jpg",
+      "color": "#CDDC39"
+    },
+    {
+      "name": "Sameer",
+      "description": "skip",
+      "photo": "http://bootstrap.gallery/everest-v3/img/user5.jpg",
+      "color": "#FF5722"
+    }
+  ]
+}
